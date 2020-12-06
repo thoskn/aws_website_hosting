@@ -13,8 +13,8 @@ resource "aws_s3_bucket" "static_website" {
 }
 
 resource "aws_s3_bucket_policy" "static_website" {
-  	bucket = aws_s3_bucket.static_website.id
-  	policy = data.aws_iam_policy_document.s3_policy.json
+  bucket = aws_s3_bucket.static_website.id
+  policy = data.aws_iam_policy_document.s3_policy.json
 }
 
 data "aws_iam_policy_document" "s3_policy" {

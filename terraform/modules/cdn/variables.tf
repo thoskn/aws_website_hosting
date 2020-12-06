@@ -1,3 +1,8 @@
+variable "website_version" {
+  type        = string
+  description = "The version of the website. Used to set the default and error pages."
+}
+
 variable "origin_domain_name" {
   type        = string
   description = "The domain name of the origin"

@@ -13,13 +13,13 @@ resource "aws_cloudfront_distribution" "example_website" {
     }
   }
 
-  enabled = true
-  default_root_object = "v1/index.html"
+  enabled             = true
+  default_root_object = "${var.website_version}/index.html"
 
   custom_error_response {
-    error_code = 403
-    response_code = 404
-    response_page_path = "/v1/error.html"
+    error_code         = 403
+    response_code      = 404
+    response_page_path = "/${var.website_version}/error.html"
   }
 
   logging_config {
@@ -51,8 +51,7 @@ resource "aws_cloudfront_distribution" "example_website" {
     }
   }
 
-  //  TODO
-  tags = merge(var.tags, {})
+  tags = merge(var.tags, { website_version = var.website_version })
 
   viewer_certificate {
     cloudfront_default_certificate = true

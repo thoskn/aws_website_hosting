@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "logging" {
-  acl = "log-delivery-write"
+  acl           = "log-delivery-write"
   bucket_prefix = var.bucket_name_prefix
 
   versioning {
