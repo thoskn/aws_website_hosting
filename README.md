@@ -42,3 +42,8 @@ with the custom domain AWS certificate manager can be used for storing and valid
 
 The cloudwatch distribution is using the cheapest price class, which means that not all edge locations are used. To 
 improve the latency in regions not served by the enabled edge locations a higher price class should be used.
+
+For security a web application firewall can be created via AWS WAF. This allows rules to be created for filtering traffic 
+to the website. A good place to start for rules to apply is the top ten web application security risks identified by OWASP,
+which can be found [here](https://owasp.org/www-project-top-ten/). This will become far more important when hosting a 
+non-trivial website, unlike this current one. 
