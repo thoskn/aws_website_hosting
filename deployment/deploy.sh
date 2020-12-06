@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
-version=$1
-s3_bucket=$2
+s3_bucket=$1
+version=$2
 
 rm -r deployment/src 2> /dev/null
 mkdir -p "deployment/src/${version}"
