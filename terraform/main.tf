@@ -28,3 +28,10 @@ module "logging" {
   environment = var.environment
   tags        = local.tags
 }
+
+module "monitoring" {
+  source                     = "./modules/monitoring"
+  environment                = var.environment
+  cloudfront_distribution_id = module.cdn.cloudfront_distribution_id
+  tags                       = local.tags
+}
