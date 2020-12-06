@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "logging" {
   acl           = "log-delivery-write"
-  bucket_prefix = var.bucket_name_prefix
+  bucket_prefix = "${var.environment}-logging-"
 
   versioning {
     enabled = true
@@ -13,6 +13,12 @@ resource "aws_s3_bucket" "logging" {
       }
     }
   }
+  tags = merge(
+    var.tags,
+    {
+      tier = "logging"
+    }
+  )
 }
 
 resource "aws_s3_bucket_public_access_block" "logging" {

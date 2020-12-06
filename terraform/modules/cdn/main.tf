@@ -51,7 +51,13 @@ resource "aws_cloudfront_distribution" "example_website" {
     }
   }
 
-  tags = merge(var.tags, { website_version = var.website_version })
+  tags = merge(
+    var.tags,
+    {
+      website_version = var.website_version
+      tier            = "cdn"
+    }
+  )
 
   viewer_certificate {
     cloudfront_default_certificate = true

@@ -1,6 +1,5 @@
 resource "aws_s3_bucket" "static_website" {
-  //  TODO naming include environment/workspace
-  bucket_prefix = "my-example-website-th202012"
+  bucket_prefix = "${var.environment}-my-example-website-"
   acl           = "private"
 
   logging {
@@ -8,8 +7,12 @@ resource "aws_s3_bucket" "static_website" {
     target_prefix = var.logging_prefix
   }
 
-  //  TODO more than just common? application tier?
-  tags = merge(var.tags, {})
+  tags = merge(
+    var.tags,
+    {
+      tier = "static_website_origin"
+    }
+  )
 }
 
 resource "aws_s3_bucket_public_access_block" "static_website" {

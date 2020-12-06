@@ -1,6 +1,6 @@
-variable "bucket_name_prefix" {
+variable "environment" {
   type        = string
-  description = "The prefix for the name of the bucket"
+  description = "The environment being deployed to."
 }
 
 variable "tags" {

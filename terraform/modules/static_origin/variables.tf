@@ -1,3 +1,8 @@
+variable "environment" {
+  type        = string
+  description = "The environment being deployed to."
+}
+
 variable "logging_bucket" {
   type        = string
   description = "The name of the bucket to send logs to."

@@ -1,7 +1,6 @@
 locals {
   tags = {
-    //    TODO
-    "environment"  = "DEV"
+    "environment"  = var.environment
     "tf_workspace" = terraform.workspace
   }
 }
@@ -9,7 +8,8 @@ locals {
 module "static_origin" {
   source         = "./modules/static_origin"
   logging_bucket = module.logging.logging_bucket_name
-  logging_prefix = "static_s3_origin"
+  logging_prefix = "static_s3_origin/"
+  environment    = var.environment
   tags           = local.tags
 }
 
@@ -24,8 +24,7 @@ module "cdn" {
 }
 
 module "logging" {
-  source = "./modules/logging"
-  //  TODO
-  bucket_name_prefix = "th-logging-202012"
-  tags               = local.tags
+  source      = "./modules/logging"
+  environment = var.environment
+  tags        = local.tags
 }
